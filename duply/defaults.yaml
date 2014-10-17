@@ -1,0 +1,10 @@
+{% load_yaml as rawmap_osfam %}
+Debian:
+  pkgs:
+    - duply
+    - python-paramiko {# -> No module named paramiko #}
+    - python-gobject-2 {# -> No module named gio #}
+RedHat:
+  pkgs:
+    - duply
+{% endload %}
