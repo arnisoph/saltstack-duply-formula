@@ -24,11 +24,14 @@ duply_profile_{{ k }}_parent_dir:
 
 duply_profile_{{ k }}_dir:
   file:
-    - directory
+    - {{ v.ensure|default('directory') }}
+    - name: {{ prof_loc }}
     - name: {{ prof_loc }}/{{ k }}
     - mode: 700
     - user: root
     - group: root
+
+{% if v.ensure|default('directory') != 'absent' %}
 
 duply_profile_{{ k }}_conf:
   file:
@@ -54,7 +57,7 @@ duply_profile_{{ k }}_exclude:
     - context:
       excludes: {{ v.excludes|default({}) }}
 
-  {% if 'pre' in v %}
+    {% if 'pre' in v %}
 duply_profile_{{ k }}_pre_script:
   file:
     - managed
@@ -64,9 +67,9 @@ duply_profile_{{ k }}_pre_script:
     - user: root
     - group: root
     - template: jinja
-  {% endif %}
+    {% endif %}
 
-  {% if 'post' in v %}
+    {% if 'post' in v %}
 duply_profile_{{ k }}_post_script:
   file:
     - managed
@@ -76,5 +79,6 @@ duply_profile_{{ k }}_post_script:
     - user: root
     - group: root
     - template: jinja
+    {% endif %}
   {% endif %}
 {% endfor %}
