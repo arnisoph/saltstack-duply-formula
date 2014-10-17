@@ -41,7 +41,7 @@ Additional resources
 
 You may find the following formulas helpful, too:
 
-* `binddns-formula <https://github.com/bechtoldt/saltstack-crypto-formula>`_
+* `saltstack-crypto-formula <https://github.com/bechtoldt/saltstack-crypto-formula>`_
 
 Templates
 ---------
