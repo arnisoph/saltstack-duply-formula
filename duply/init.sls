@@ -13,12 +13,7 @@ duply:
 
 {% for k, v in datamap.profiles|default({})|dictsort if k != 'common' %}
   {% set prof_loc = v.profile_location|default('/root/.duply') %}
-
   {% set common_prof = datamap.profiles.common|default({}) %}
-  {% set prof_settings = common_prof.conf|default({}) %}
-  {% do prof_settings.update(v.conf) %}
-  #  {{ v.conf }}
-
 
 duply_profile_{{ k }}_parent_dir:
   file:
@@ -49,7 +44,8 @@ duply_profile_{{ k }}_conf:
     - group: root
     - template: jinja
     - context:
-      settings: {{ prof_settings }}
+      common_settings: {{ common_prof.conf|default({}) }}
+      settings: {{ v.conf }}
       dupl_params: {{ v.dupl_params|default([]) }}
 
 duply_profile_{{ k }}_exclude:

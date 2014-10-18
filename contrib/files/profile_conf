@@ -1,4 +1,5 @@
-{%- for k, v in settings|dictsort -%}
+{%- do common_settings.update(settings) -%}
+{%- for k, v in common_settings.items() -%}
 {{ k }}="{{ v }}"
 {% endfor -%}
-DUPL_PARAMS="${DUPL_PARAMS} {{ dupl_params|join(' ') }}"
+DUPL_PARAMS="${DUPL_PARAMS} ${CUSTOM_DUPL_PARAMS} {{ dupl_params|join(' ') }}"
