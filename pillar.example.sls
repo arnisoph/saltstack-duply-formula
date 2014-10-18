@@ -35,10 +35,12 @@ duply:
           TARGET: 'file:///var/backups/duplytest'
           SOURCE: '/usr/'
           VERBOSITY: 5
-        #excludes:
-        #  - '/usr/local'
-        #  - '- /usr/local/doc'
-        #  - '/usr/local/bin'
+        excludes:
+          - '/usr/local'
+          - '- /usr/local/doc'
+          - '/usr/local/bin'
+        dupl_params:
+          - "--exclude-regexp '${SOURCE}/.*/priv/nobackup/.*'"
         pre: {}
         post: {}
 

@@ -44,6 +44,7 @@ duply_profile_{{ k }}_conf:
     - template: jinja
     - context:
       settings: {{ v.conf|default({}) }}
+      dupl_params: {{ v.dupl_params|default([]) }}
 
 duply_profile_{{ k }}_exclude:
   file:
