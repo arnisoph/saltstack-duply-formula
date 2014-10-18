@@ -28,13 +28,20 @@ duply:
     sls_include:
       - crypto.gpg
     profiles:
-      myprof_example2:
+      common:
         conf:
           GPG_KEY: 'F1D35B33'
           GPG_PW: 'password'
-          TARGET: 'file:///var/backups/duplytest'
-          SOURCE: '/usr/'
           VERBOSITY: 5
+      myprof_example2:
+        conf:
+          TARGET: 'file:///var/backups/duplytest'
+          SOURCE: '/var/'
+      myprof_example3:
+        conf:
+          TARGET: 'file:///var/backups/duplytest2'
+          SOURCE: '/usr/'
+          VERBOSITY: 3
         excludes:
           - '/usr/local'
           - '- /usr/local/doc'
