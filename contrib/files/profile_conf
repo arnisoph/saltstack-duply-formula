@@ -1,4 +1,4 @@
 {%- for k, v in settings|dictsort -%}
-{{ k }}="{{ v }}"
+{{ k }}="{{ v }}"
 {% endfor -%}
 DUPL_PARAMS="${DUPL_PARAMS} {{ dupl_params|join(' ') }}"
