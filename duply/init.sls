@@ -65,7 +65,7 @@ duply_profile_{{ k }}_pre_script:
   file:
     - managed
     - name: {{ prof_loc }}/{{ k }}/pre
-    - source: {{ v.pre.pre_template_path|default('salt://duply/files/pre') }}
+    - source: {{ v.pre.template_path|default('salt://duply/files/pre') }}
     - mode: 700
     - user: root
     - group: root
@@ -77,7 +77,7 @@ duply_profile_{{ k }}_post_script:
   file:
     - managed
     - name: {{ prof_loc }}/{{ k }}/post
-    - source: {{ v.post.pre_template_path|default('salt://duply/files/post') }}
+    - source: {{ v.post.template_path|default('salt://duply/files/post') }}
     - mode: 700
     - user: root
     - group: root
