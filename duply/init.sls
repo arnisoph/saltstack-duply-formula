@@ -65,7 +65,11 @@ duply_profile_{{ k }}_pre_script:
   file:
     - managed
     - name: {{ prof_loc }}/{{ k }}/pre
+      {% if 'contents' in v.pre %}
+    - contents_pillar: duply:lookup:profiles:{{ k }}:pre:contents
+      {% else %}
     - source: {{ v.pre.template_path|default('salt://duply/files/pre') }}
+      {% endif %}
     - mode: 700
     - user: root
     - group: root
@@ -77,7 +81,11 @@ duply_profile_{{ k }}_post_script:
   file:
     - managed
     - name: {{ prof_loc }}/{{ k }}/post
+      {% if 'contents' in v.post %}
+    - contents_pillar: duply:lookup:profiles:{{ k }}:post:contents
+      {% else %}
     - source: {{ v.post.template_path|default('salt://duply/files/post') }}
+      {% endif %}
     - mode: 700
     - user: root
     - group: root
