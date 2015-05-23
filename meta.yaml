@@ -1,0 +1,8 @@
+name: saltstack-duply-formula
+source: https://github.com/bechtoldt/saltstack-duply-formula
+summary: SaltStack Formula to set up and configure Duply, a frontend for the backup tool duplicity
+todo:
+  - add instructions how to use formhelper, add information about it in the formula-docs (dependency), show up alternative?
+  - 'table/ matrix: os/salt compatibility (dedicated file)'
+  - add list of available states
+  - add tests
